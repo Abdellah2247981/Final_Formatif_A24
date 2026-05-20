@@ -24,11 +24,12 @@ export class AppComponent {
   ng_shake = 0;
   ng_bounce = 0;
   ng_tada = 0;
+  rotate = false;
   constructor() {
   }
 
 
-  shakeFlipAndBounce_Angular_1() {
+   shakeFlipAndBounce_Angular(loop : boolean = false) {
 
     // Rouge immédiatement
     this.ng_shake++;
@@ -36,7 +37,7 @@ export class AppComponent {
     // Vert après 2 sec
     setTimeout(() => {
       this.ng_bounce++;
-    }, 2000);
+    }, 2000);// settimeout 2000, veux dire 2sec apres avoir commencer la premiere animation.
 
     // Bleu 1 sec avant la fin du vert
     // Vert dure 4 sec et commence à 2
@@ -45,5 +46,21 @@ export class AppComponent {
     setTimeout(() => {
       this.ng_tada++;
     }, 5000);
+
+    if(loop){
+        setTimeout(() => {
+      this.shakeFlipAndBounce_Angular(true);
+    }, 8000);
+    }
   }
+
+
+  tourner(){
+    this.rotate = true;
+setTimeout(() => {
+      this.rotate = false;
+    }, 2000);
+  }
+
+
 }
